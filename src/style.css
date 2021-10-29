@@ -1,0 +1,237 @@
+* {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0
+}
+
+body {
+  background-color: #262626;
+  overflow-x: hidden;
+  color: #fff
+}
+
+.gallery-container {
+  box-sizing: content-box;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 20px;
+  width: 80%;
+  margin: 100px auto 30px
+}
+
+.gallery-container .photo-item {
+  width: 100%;
+  overflow: hidden;
+  max-height: 300px;
+  justify-content: center;
+  box-sizing: border-box;
+  align-self: center;
+  position: relative
+}
+
+.gallery-container .photo-item .img {
+  width: 100%;
+  -webkit-filter: grayscale(.75);
+  filter: grayscale(.75);
+  cursor: pointer;
+  -webkit-transition: all .35s ease;
+  transition: all .35s ease
+}
+
+.gallery-container .photo-item .img:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0)
+}
+
+.gallery-container .photo-item .img:hover img {
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06)
+}
+
+.gallery-container .photo-item .img img {
+  width: 100%;
+  max-height: 300px;
+  border-radius: 5%;
+  -webkit-transition: all .35s ease;
+  transition: all .35s ease
+}
+
+.loader-box {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.loader-box .loader {
+  font-size: 30px;
+  cursor: pointer
+}
+
+.loader-box .loader.active {
+  -webkit-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite
+}
+
+.loader-box .loader:hover {
+  opacity: .7
+}
+
+.header {
+  position: fixed;
+  height: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0,0,0,.8);
+  justify-content: space-between;
+  padding: 5px 15px
+}
+
+.header,.header .logo {
+  display: flex;
+  align-items: center
+}
+
+.header .logo {
+  width: 65px;
+  height: 65px;
+  justify-content: center;
+  border-radius: 100%;
+  opacity: .9;
+  cursor: pointer
+}
+
+.header .logo:hover {
+  opacity: 1
+}
+
+.header .logo img {
+  width: 90%;
+  border-radius: 100%;
+  max-height: 90%
+}
+
+.header .item {
+  padding: 5px;
+  margin: 0 30px;
+  text-transform: uppercase;
+  opacity: .7;
+  cursor: pointer;
+  color: #fff
+}
+
+.header .item.active,.header .item:hover {
+  opacity: 1;
+  text-decoration: underline
+}
+
+.slider {
+  width: 100vw;
+  height: 100vh;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: grayscale(.5);
+  filter: grayscale(.5);
+  position: relative
+}
+
+.slider:before {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 50%;
+  font-size: 80px;
+  line-height: 1;
+  opacity: .7;
+  color: #fff;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif
+}
+
+.main-loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.7);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.main-loader-container .main-loader {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border-color: transparent #fff;
+  border-style: solid;
+  border-width: 3px;
+  -webkit-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite
+}
+
+@-webkit-keyframes rotate {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+
+  to {
+      -webkit-transform: rotate(1turn);
+      transform: rotate(1turn)
+  }
+}
+
+@keyframes rotate {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg)
+  }
+
+  to {
+      -webkit-transform: rotate(1turn);
+      transform: rotate(1turn)
+  }
+}
+
+.backTo {
+  position: fixed;
+  left: 50px;
+  top: 120px;
+  z-index: 10;
+  cursor: pointer
+}
+
+.backTo:hover {
+  text-decoration: underline
+}
+
+.photo-card-section {
+  position: relative
+}
+
+.photo-card-section .fullname {
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
+  font-weight: 700;
+  background-color: #fff;
+  padding: 15px;
+  color: #000
+}
+
+.user-card-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
+  text-align: center
+}
