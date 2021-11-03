@@ -6,12 +6,12 @@ let conf = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './build/'),
-        filename: 'main.js',
+        filename: 'js/main.js',
         publicPath: 'build/'
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'styles.css',
+            filename: 'css/styles.css',
         }),
     ],
     module: {

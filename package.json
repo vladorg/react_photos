@@ -1,5 +1,5 @@
 {
-  "name": "react-blog",
+  "name": "react-photos",
   "jest": {
     "verbose": true,
     "moduleNameMapper": {
@@ -11,8 +11,7 @@
     }
   },
   "version": "1.0.0",
-  "description": "this is a my second react app",
-  "main": "index.js",
+  "description": "this is a my new react app",
   "scripts": {
     "d": "webpack-dev-server --mode development --open",
     "b": "webpack --mode production",

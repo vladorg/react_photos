@@ -1,32 +1,35 @@
 import Home from '~p/home';
-import Card from '~p/card';
+import Photo from '~p/photo';
 import User from '~p/user';
 import Page404 from '~p/page404';
+
+export const __ROOT = '/react_photos';
+//export const __ROOT = '';
 
 const routesList = [
   {
     name: 'home',
     component: Home,
-    path: '/',
+    path: __ROOT+'/',
     exact: true
   },
   {
-    name: 'card',
-    component: Card,
-    path: '/card',
+    name: 'photo',
+    component: Photo,
+    path: __ROOT+'/photo/:id',
     exact: true
   },
   {
     name: 'user',
     component: User,
-    path: '/user',
+    path: __ROOT+'/user/:login',
     exact: true
   },
   
   {
     name: 'page404',
     component: Page404,
-    path: '404'
+    path: __ROOT+'/404'
   }
 ];
 

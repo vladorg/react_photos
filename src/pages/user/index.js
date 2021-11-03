@@ -1,7 +1,12 @@
 import React from "react";
+import User from '~c/user';
 
-const UserContainer = () => {
-  return <h1>User</h1>
+const UserPageContainer = () => {
+  return (
+    <>
+      <User/>
+    </>
+  )
 }
 
-export default UserContainer;
+export default UserPageContainer;

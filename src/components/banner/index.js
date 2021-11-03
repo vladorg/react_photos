@@ -1,11 +1,46 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router";
+import actions from '~s/actions';
+import withLoader from "~ROOT/hocs/withLoader";
+import Banner from './Banner.jsx';
+import ErrorServer from '~c/errors/Server.jsx';
 
-const BannerContainer = () => {
-  const imageUrl = 'https://images.unsplash.com/photo-1594975559027-c35bfa5de65e?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjEwMjU1OX0';
+const BannerContainer = props => {  
+
+  const {showLoader, hideLoader, status: loaderStatus} = props.loader;
+  const dispatch = useDispatch();
+  const selector = useSelector;
+  const [counter, setCounter] = useState(0);
+  const [error, setError] = useState(false);
+  const images = selector(state => state.bannerReducer.images);
+  let timeout;
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeout);
+    }
+  })
+
+  useEffect(() => {
+    showLoader('banner')
+    dispatch(actions.bannerActions.load())
+      .then(() => hideLoader('banner'))
+      .catch(() => {
+        setError(true);
+        hideLoader('banner');
+      })
+    return () => {
+      dispatch(actions.bannerActions.clear())
+    }
+  }, []);
+
+  if (error) return <ErrorServer text="Не удалось загрузить баннер..."/>;
+  if (counter < 9) timeout = setTimeout(() => setCounter(counter + 1), 5000);
+  if (counter >= 9) setCounter(0);
   
-  return (
-    <div className="slider" style={{backgroundImage: `url(${imageUrl})`}}></div>
-  )
+  
+  return <Banner image={images[counter]}/>
 }
 
-export default BannerContainer;
+export default withRouter(withLoader(BannerContainer));
