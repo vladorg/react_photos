@@ -3,8 +3,8 @@ import Photo from '~p/photo';
 import User from '~p/user';
 import Page404 from '~p/page404';
 
-export const __ROOT = '/react_photos';
-//export const __ROOT = '';
+// export const __ROOT = '/react_photos'; // deploy only
+export const __ROOT = '';
 
 const routesList = [
   {
